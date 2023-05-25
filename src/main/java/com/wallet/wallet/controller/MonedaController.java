@@ -1,5 +1,6 @@
 package com.wallet.wallet.controller;
 
+import com.wallet.wallet.dto.MonedaDto;
 import com.wallet.wallet.repositorio.WalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,16 +12,18 @@ import java.util.ArrayList;
 
 @RestController
 public class MonedaController {
+
     @Autowired
     private WalletRepository wr;
+
+
 
     @CrossOrigin
     @GetMapping(path="/moneda")
     public ResponseEntity ListaMonedas(){
-        ArrayList<String> moneda = new ArrayList<>();
-        moneda.add("Dolar Estadounidense");
+        ArrayList<MonedaDto> moneda = new ArrayList<>();
+        moneda.addAll(wr.buscarValoresMonedas());
 
-        wr.buscarValoresMonedas();
 
         return ResponseEntity.ok(moneda);
     }
