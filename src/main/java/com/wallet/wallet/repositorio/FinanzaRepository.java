@@ -11,7 +11,9 @@ public class FinanzaRepository {
     private JdbcTemplate jdbctemplate;
 
     public void GuardarFinanzas(FinanzaDto FD){
-        jdbctemplate.update("");
+
+        String sql = "INSERT INTO FINANZAS (ID,Nombre,Salario,Gastos,Moneda) values ("+FD.id+",'"+ FD.nombre+"','"+FD.salario+"',"+FD.gastos+","+FD.moneda+")";
+        jdbctemplate.update(sql);
 
     }
 }

@@ -5,5 +5,6 @@ public class FinanzaDto {
     public float salario;
     public float gastos;
     public int moneda;
+    public int id;
 
 }
